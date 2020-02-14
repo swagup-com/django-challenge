@@ -9,4 +9,5 @@ router = routers.SimpleRouter()
 
 router.register(r'accounts', views.AccountViewSet)
 
-urlpatterns = router.urls
+urlpatterns = router.urls + [path('fizz-buzz/', views.fizzbuzz), path(
+    'fizz-buzz2/', views.fizzbuzz2)]
