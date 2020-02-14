@@ -1,4 +1,4 @@
-# django-challenge
+# Django-challenge
 
 ## Task1:
 
@@ -43,7 +43,7 @@ class AccountWithoutName(serializers.ModelSerializer):
 
 #### Errors
 
-If you don't pass the las */* this dosent work.
+If you don't pass the las */* this doesn't work.
 
 
 ## Task2:
@@ -90,10 +90,10 @@ As you can see x is a querystring param and by default this number should be 100
 
 ### Solution:
 
-I didnt underestand very well what is the expected output (lack of example).
-so i make 2 `fizz-buzz` one give the output like a single string and the other like a list of ansewrs.
+I didn't understand very well what is the expected output (lack of example).
+so I make 2 `fizz-buzz` one give the output like a single string and the other like a list of answers.
 
-The important part is the *solve_fizz* function that given a number, return the `fizz-buz` output:
+The important part is the *solve_fizz* function that given a number, return the `fizz-buzz` output:
 
 
 ```python
@@ -118,3 +118,7 @@ Besides we need to incribe the routes an it's handlers:
 urlpatterns = router.urls + [path('fizz-buzz/', views.fizzbuzz), path(
     'fizz-buzz2/', views.fizzbuzz2)]
 ```
+
+## Tests
+
+I put some methods on the task1 I was a little rusty on Django tests. If I have time tomorrow I add some more.
