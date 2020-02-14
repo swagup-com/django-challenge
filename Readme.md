@@ -1,25 +1,61 @@
 # django-challenge
 
-Task1:
+## Task1:
 
 
 We have create, list and retrieve features but lack the ability to update. Introduce a new `PUT` endpoint at `/api/v1/accounts/{id}/` that receives a JSON body containing `phone`, `shipping_address1`, `shipping_address2`, `shipping_city`, `shipping_state`, `shipping_zip`,
 `shipping_country`. The feature should update the existing record and return a JSON body representing the new state of the account item.
 
 
-Solution:
+### Solution:
+
+Add a mixin for update content for do this edit line 9-13 of *accounts/views.py* adding `mixins.UpdateModelMixin`:
+
+Before:
+
+```python
+class AccountViewSet(mixins.ListModelMixin,
+                     mixins.RetrieveModelMixin,
+                     mixins.CreateModelMixin,
+                     viewsets.GenericViewSet):
+```
+
+After:
+
+```python
+class AccountViewSet(mixins.ListModelMixin,
+                     mixins.RetrieveModelMixin,
+                     mixins.CreateModelMixin,
+                     mixins.UpdateModelMixin,
+                     viewsets.GenericViewSet):
+```
+
+And added another Serializer for not force to pass name every time:
+
+```python
+class AccountWithoutName(serializers.ModelSerializer):
+    class Meta:
+        model = models.Account
+        fields = '__all__'
+        extra_kwargs = {'name': {'required': False}}
+```
 
 
-Task2:
+#### Errors
+
+If you don't pass the las */* this dosent work.
+
+
+## Task2:
 
 
 Also add a way to filter accounts by `shipping_country` in the admin interface
 
 
-Solution:
+### Solution:
 
 
-Task3:
+## Task3:
 
 
 Besides write a view responding to a `GET` to path `/api/v1/fizz-buzz/?x=25` that will write the results of running FizzBuzz program for numbers from 1 to x. 
@@ -28,4 +64,4 @@ As you can see x is a querystring param and by default this number should be 100
 
 {"x": 100, "fizzbuzz": "here comes the result of your algorithm"}
 
-Solution:
+### Solution:
