@@ -54,6 +54,30 @@ Also add a way to filter accounts by `shipping_country` in the admin interface
 
 ### Solution:
 
+Add a `list_filter` field in `AccountAdmin` in *admin.py*:
+
+
+Before:
+
+```python
+@admin.register(models.Account)
+class AccountAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone')
+    search_fields = ('name',)
+```
+
+After:
+
+```python
+@admin.register(models.Account)
+class AccountAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone')
+    search_fields = ('name',)
+    list_filter = (
+        ('shipping_country', admin.AllValuesFieldListFilter),
+    )
+```
+
 
 ## Task3:
 
