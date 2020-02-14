@@ -89,3 +89,32 @@ As you can see x is a querystring param and by default this number should be 100
 {"x": 100, "fizzbuzz": "here comes the result of your algorithm"}
 
 ### Solution:
+
+I didnt underestand very well what is the expected output (lack of example).
+so i make 2 `fizz-buzz` one give the output like a single string and the other like a list of ansewrs.
+
+The important part is the *solve_fizz* function that given a number, return the `fizz-buz` output:
+
+
+```python
+
+def solve_fizz(x: int)->str:
+    ans = ''
+    if x % 3 == 0:
+        ans += 'Fizz'
+
+    if x%5 == 0:
+        ans += 'Buzz'
+
+    if not ans:
+        return str(x)
+
+    return ans
+```
+
+Besides we need to incribe the routes an it's handlers:
+
+```python
+urlpatterns = router.urls + [path('fizz-buzz/', views.fizzbuzz), path(
+    'fizz-buzz2/', views.fizzbuzz2)]
+```
